@@ -18,6 +18,11 @@
     "mocha": "^2.5.3"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
+  },
+  "dependencies": {
+    "immutable": "^3.8.1"
   }
 }
