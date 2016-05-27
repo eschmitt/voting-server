@@ -2,6 +2,10 @@
   "name": "voting-server",
   "version": "1.0.0",
   "description": "Voting app implemented from tutorial",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eschmitt/voting-server.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive",
