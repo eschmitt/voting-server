@@ -1,10 +1,13 @@
 import {List, Map} from 'immutable';
 
+// Vote :: Map { pair: List [String], tally: Map {String: Int} }
+// State :: Map { vote: Vote, entries: List [String] }
+
+// setEntries :: State -> List [String] -> State
 export function setEntries(state, entries) {
   return state.set('entries', List(entries));
 }
 
-// Vote :: Map { pair: List [String], tally: Map {String: Int} }
 // getWinners :: Vote -> [String]
 function getWinners(vote) {
   if (!vote) return [];
@@ -16,6 +19,7 @@ function getWinners(vote) {
   else { return [a, b]; }
 }
 
+// next :: State -> State
 export function next(state) {
   const winners = getWinners(state.get('vote'));
   const entries = state.get('entries').concat(winners);
@@ -25,6 +29,7 @@ export function next(state) {
   });
 }
 
+// vote :: State -> String -> State
 export function vote(state, entry) {
   return state.updateIn(
     ['vote', 'tally', entry]
