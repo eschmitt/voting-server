@@ -100,14 +100,15 @@ describe('application logic', () => {
       , entries: List()
       });
       const nextState = vote(state, movies[0]);
-
-      assert.equal(nextState, Map({
+      const expected = Map({
         vote: Map({
           pair: List.of(movies[0], movies[1])
         , tally: Map({ 'Trainspotting': 1 })
         })
       , entries: List()
-      }));
+      });
+
+      assert.equal(nextState, expected);
     });
     
     it('adds to existing tally of the voted entry', () => {
@@ -122,8 +123,7 @@ describe('application logic', () => {
       , entries: List()
       });
       const nextState = vote(state, movies[0]);
-    
-      assert.equal(nextState, Map({
+      const expected = Map({
         vote: Map({
           pair: List.of(movies[0], movies[1])
         , tally: Map({
@@ -132,7 +132,9 @@ describe('application logic', () => {
           })
         })
       , entries: List()
-      }));
+      });
+
+      assert.equal(nextState, expected);
     });
   });
 });
