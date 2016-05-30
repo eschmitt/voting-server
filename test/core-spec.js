@@ -134,7 +134,6 @@ describe('application logic', () => {
       const state = Map({
         vote: Map({
           pair: pair
-          //pair: List.of(movies[0], movies[1])
         , tally: Map({
             'Trainspotting': 3
           , '28 Days Later': 2
