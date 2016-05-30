@@ -109,19 +109,19 @@ describe('application logic', () => {
   });
 
   describe('vote', () => {
-    const movies = ['Trainspotting', '28 Days Later'];
+    const pair = List(['Trainspotting', '28 Days Later']);
 
     it('creates a tally for the voted entry', () => {
       const state = Map({
         vote: Map({
-          pair: List.of(movies[0], movies[1])
+          pair: pair 
         })
       , entries: List()
       });
-      const nextState = vote(state, movies[0]);
+      const nextState = vote(state, pair.first());
       const expected = Map({
         vote: Map({
-          pair: List.of(movies[0], movies[1])
+          pair: pair
         , tally: Map({ 'Trainspotting': 1 })
         })
       , entries: List()
@@ -133,7 +133,8 @@ describe('application logic', () => {
     it('adds to existing tally of the voted entry', () => {
       const state = Map({
         vote: Map({
-          pair: List.of(movies[0], movies[1])
+          pair: pair
+          //pair: List.of(movies[0], movies[1])
         , tally: Map({
             'Trainspotting': 3
           , '28 Days Later': 2
@@ -141,10 +142,10 @@ describe('application logic', () => {
         })
       , entries: List()
       });
-      const nextState = vote(state, movies[0]);
+      const nextState = vote(state, pair.first());
       const expected = Map({
         vote: Map({
-          pair: List.of(movies[0], movies[1])
+          pair: pair
         , tally: Map({
             'Trainspotting': 4
           , '28 Days Later': 2
