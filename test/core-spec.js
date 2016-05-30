@@ -9,18 +9,22 @@ describe('application logic', () => {
       const state = Map();
       const entries = List.of('Trainspotting', '28 Days Later');
       const nextState = setEntries(state, entries);
-      assert.equal(nextState, Map({
+      const expected = Map({
         entries: List.of('Trainspotting', '28 Days Later')
-      }));
+      });
+
+      assert.equal(nextState, expected);
     });
 
     it('converts entries to immutable datastructures', () => {
       const state = Map();
       const entries = ['Trainspotting', '28 Days Later'];
       const nextState = setEntries(state, entries);
-      assert.equal(nextState, Map({
+      const expected = Map({
         entries: List.of('Trainspotting', '28 Days Later')
-      }));
+      });
+
+      assert.equal(nextState, expected);
     });
   });
 
