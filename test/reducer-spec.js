@@ -59,4 +59,12 @@ describe('reducer', () => {
 
     assert.equal(finalState, expected);
   });
+
+  it('has an initial state', () => {
+    const action = {type: 'SET_ENTRIES', entries: ['Trainspotting']};
+    const nextState = reducer(undefined, action);
+    const expected = fromJS({entries: ['Trainspotting']});
+
+    assert.equal(nextState, expected);
+  });
 });

@@ -1,5 +1,7 @@
 import {List, Map} from 'immutable';
 
+export const INITIAL_STATE = Map();
+
 // Vote :: Map { pair: List [String], tally: Map {String: Int} }
 // State :: Map { vote: Vote, entries: List [String] }
 
