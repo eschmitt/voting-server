@@ -1,4 +1,5 @@
 import {INITIAL_STATE, setEntries, next, vote} from './core'
+import {__} from 'ramda'
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -7,7 +8,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case 'NEXT':
       return next(state);
     case 'VOTE': 
-      return vote(state, action.entry);
+      return state.update('vote', vote(__, action.entry));
     default:
       return state;
   }

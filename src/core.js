@@ -1,4 +1,5 @@
 import {List, Map} from 'immutable';
+import {curry} from 'ramda';
 
 export const INITIAL_STATE = Map();
 
@@ -39,10 +40,10 @@ export function next(state) {
 }
 
 // vote :: State -> String -> State
-export function vote(state, entry) {
+export const vote = curry(function (state, entry) {
   return state.updateIn(
-    ['vote', 'tally', entry]
+    ['tally', entry]
   , 0
   , tally => tally + 1
   );
-}
+});
