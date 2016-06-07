@@ -8,6 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "start": "babel-node app.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js --recursive --growl",
     "test:watch": "npm run test -- --watch"
   },
