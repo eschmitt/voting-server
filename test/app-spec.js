@@ -1,22 +1,28 @@
 import {assert} from 'chai';
 import io from 'socket.io-client';
+import {drop, take} from 'ramda';
 
-const url = 'localhost:8090';
-const options = {
-  transports: ['websockets']
-, 'force new connection': true
-};
 
 describe('app', () => {
-  const client = io.connect(url, options);
+  const url = 'http://localhost:8090';
+  const socket = io.connect(url);
 
   it('emits state on connection', (done) => {
+    const entries = require('./fixtures/entries.json');
     const expected = {
-      entries: require('./fixtures/entries.json')
+      entries: drop(2, entries) 
+    , vote: {
+        pair: take(2, entries)
+      }
     };
 
-    client.on('connection', (data) => {
-      assert.equal(data, expected);
+    socket.on('error', (err) => {
+      console.dir(err);
+      done();
+    });
+
+    socket.on('state', (state) => {
+      assert.deepEqual(state, expected);
       done();
     });
   });
