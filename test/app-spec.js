@@ -10,13 +10,11 @@ describe('app', () => {
   it('emits state on connection', (done) => {
     const entries = require('./fixtures/entries.json');
     const expected = {
-      entries: entries
+      entries: drop(2, entries)
+    , vote: {
+        pair: take(2, entries)
+      }
     };
-
-    socket.on('error', (err) => {
-      console.dir(err);
-      done();
-    });
 
     socket.on('state', (state) => {
       assert.deepEqual(state, expected);
