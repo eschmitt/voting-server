@@ -10,10 +10,7 @@ describe('app', () => {
   it('emits state on connection', (done) => {
     const entries = require('./fixtures/entries.json');
     const expected = {
-      entries: drop(2, entries) 
-    , vote: {
-        pair: take(2, entries)
-      }
+      entries: entries
     };
 
     socket.on('error', (err) => {
